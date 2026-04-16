@@ -1,0 +1,1981 @@
+Question 4: Temperature Class
+public class Temperature {
+    private double celsius;
+    
+    // One-parameter constructor
+    public Temperature(double celsius) {
+        setCelsius(celsius);
+    }
+    
+    public double getCelsius() {
+        return celsius;
+    }
+    
+    public double toFahrenheit() {
+        return celsius * 9/5 + 32;
+    }
+    
+    public void setCelsius(double celsius) {
+        if (celsius > -273.15) {
+            this.celsius = celsius;
+        } else {
+            System.out.println("Error: Temperature below absolute zero");
+        }
+    }
+    
+    public void printInfo() {
+        System.out.printf("Celsius: %.1f, Fahrenheit: %.1f\n", celsius, toFahrenheit());
+    }
+    
+    public static void main(String[] args) {
+        Temperature temp = new Temperature(25.0);
+        
+        // Test with invalid value
+        System.out.println("Testing invalid temperature:");
+        temp.setCelsius(-300.0);
+        
+        // Set valid value and print
+        System.out.println("\nAfter setting valid temperature:");
+        temp.setCelsius(100.0);
+        temp.printInfo();
+    }
+}
+Question 5: Circle Class (Constructor Overloading)
+public class Circle {
+    private double radius;
+    
+    // No-argument constructor
+    public Circle() {
+        this(1.0);
+    }
+    
+    // One-parameter constructor
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+    
+    public double area() {
+        return Math.PI * radius * radius;
+    }
+    
+    public double circumference() {
+        return 2 * Math.PI * radius;
+    }
+    
+    public void printInfo() {
+        System.out.printf("Radius: %.1f, Area: %.2f, Circumference: %.2f\n", 
+                         radius, area(), circumference());
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Circle 1 (default constructor):");
+        Circle circle1 = new Circle();
+        circle1.printInfo();
+        
+        System.out.println("\nCircle 2 (parameterized constructor):");
+        Circle circle2 = new Circle(5.0);
+        circle2.printInfo();
+    }
+}
+Question 6: Box Class (Constructor Overloading)
+public class Box {
+    private double length, width, height;
+    
+    // No-argument constructor
+    public Box() {
+        this(1.0, 1.0, 1.0);
+    }
+    
+    // One-parameter constructor (cube)
+    public Box(double side) {
+        this(side, side, side);
+    }
+    
+    // Three-parameter constructor
+    public Box(double length, double width, double height) {
+        this.length = length;
+        this.width = width;
+        this.height = height;
+    }
+    
+    public double volume() {
+        return length * width * height;
+    }
+    
+    public double surfaceArea() {
+        return 2 * (length*width + width*height + height*length);
+    }
+    
+    public void printBoxInfo() {
+        System.out.printf("Box (%.1f x %.1f x %.1f) - Volume: %.2f, Surface Area: %.2f\n",
+                         length, width, height, volume(), surfaceArea());
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Box 1 (default constructor):");
+        Box box1 = new Box();
+        box1.printBoxInfo();
+        
+        System.out.println("\nBox 2 (cube constructor):");
+        Box box2 = new Box(3.0);
+        box2.printBoxInfo();
+        
+        System.out.println("\nBox 3 (three-parameter constructor):");
+        Box box3 = new Box(2.0, 3.0, 4.0);
+        box3.printBoxInfo();
+    }
+}
+Question 7: MathHelper Class (Method Overloading)
+public class MathHelper {
+    
+    // max for two integers
+    public static int max(int a, int b) {
+        return (a > b) ? a : b;
+    }
+    
+    // max for two doubles
+    public static double max(double a, double b) {
+        return (a > b) ? a : b;
+    }
+    
+    // max for three integers
+    public static int max(int a, int b, int c) {
+        return max(max(a, b), c);
+    }
+    
+    // min for two integers
+    public static int min(int a, int b) {
+        return (a < b) ? a : b;
+    }
+    
+    // min for two doubles
+    public static double min(double a, double b) {
+        return (a < b) ? a : b;
+    }
+    
+    // average of three doubles
+    public static double average(double a, double b, double c) {
+        return (a + b + c) / 3;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== MathHelper Test Results ===\n");
+        
+        // Testing max methods
+        System.out.println("max(10, 20) = " + max(10, 20));
+        System.out.println("max(15.5, 12.3) = " + max(15.5, 12.3));
+        System.out.println("max(5, 12, 8) = " + max(5, 12, 8));
+        
+        // Testing min methods
+        System.out.println("\nmin(10, 20) = " + min(10, 20));
+        System.out.println("min(15.5, 12.3) = " + min(15.5, 12.3));
+        
+        // Testing average
+        System.out.println("\naverage(10.0, 20.0, 30.0) = " + average(10.0, 20.0, 30.0));
+        System.out.println("average(5.5, 7.5, 9.0) = " + average(5.5, 7.5, 9.0));
+    }
+}
+Question 8: Printer Class (Method Overloading)
+public class Printer {
+    
+    // print integer
+    public void print(int value) {
+        System.out.println("Integer: " + value);
+    }
+    
+    // print double
+    public void print(double value) {
+        System.out.println("Double: " + value);
+    }
+    
+    // print string
+    public void print(String value) {
+        System.out.println("String: " + value);
+    }
+    
+    // print boolean
+    public void print(boolean value) {
+        System.out.println("Boolean: " + value);
+    }
+    
+    // print integer multiple times
+    public void print(int value, int times) {
+        for (int i = 0; i < times; i++) {
+            System.out.println("Integer: " + value);
+        }
+    }
+    
+    public static void main(String[] args) {
+        Printer printer = new Printer();
+        
+        System.out.println("=== Printer Test Results ===\n");
+        
+        System.out.println("1. print(int value):");
+        printer.print(42);
+        
+        System.out.println("\n2. print(double value):");
+        printer.print(3.14159);
+        
+        System.out.println("\n3. print(String value):");
+        printer.print("Hello, World!");
+        
+        System.out.println("\n4. print(boolean value):");
+        printer.print(true);
+        printer.print(false);
+        
+        System.out.println("\n5. print(int value, int times):");
+        System.out.println("Printing 5 three times:");
+        printer.print(5, 3);
+    }
+}
+Question 9: Inheritance — Animal and Dog
+// Animal class
+public class Animal {
+    protected String name;
+    protected String sound;
+    
+    public Animal(String name, String sound) {
+        this.name = name;
+        this.sound = sound;
+    }
+    
+    public void makeSound() {
+        System.out.println(name + " says " + sound);
+    }
+}
+
+// Dog class extending Animal
+public class Dog extends Animal {
+    private String breed;
+    
+    public Dog(String name, String sound, String breed) {
+        super(name, sound);
+        this.breed = breed;
+    }
+    
+    @Override
+    public void makeSound() {
+        super.makeSound();
+        System.out.println("Breed: " + breed);
+    }
+    
+    public void fetch() {
+        System.out.println(name + " is fetching the ball!");
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Animal Test ===\n");
+        
+        Animal animal = new Animal("Generic Animal", "Some sound");
+        System.out.println("Calling makeSound() on Animal:");
+        animal.makeSound();
+        
+        System.out.println("\nCalling makeSound() on Dog:");
+        Dog dog = new Dog("Buddy", "Woof Woof!", "Golden Retriever");
+        dog.makeSound();
+        
+        System.out.println("\nCalling fetch() on Dog:");
+        dog.fetch();
+    }
+}
+
+Question 10: Inheritance — Account and SavingsAccount
+// Account class
+public class Account {
+    protected String owner;
+    protected double balance;
+    
+    public Account(String owner, double balance) {
+        this.owner = owner;
+        this.balance = balance;
+    }
+    
+    public void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposited: $" + amount);
+    }
+    
+    public void printInfo() {
+        System.out.printf("Owner: %s, Balance: $%.2f\n", owner, balance);
+    }
+}
+
+// SavingsAccount class extending Account
+public class SavingsAccount extends Account {
+    private double interestRate;
+    
+    public SavingsAccount(String owner, double balance, double interestRate) {
+        super(owner, balance);
+        this.interestRate = interestRate;
+    }
+    
+    public void applyInterest() {
+        double interest = balance * interestRate;
+        balance += interest;
+        System.out.printf("Interest applied: $%.2f (Rate: %.2f%%)\n", interest, interestRate * 100);
+    }
+    
+    @Override
+    public void printInfo() {
+        super.printInfo();
+        System.out.printf("Interest Rate: %.2f%%\n", interestRate * 100);
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Account Test ===\n");
+        
+        System.out.println("Regular Account:");
+        Account account = new Account("John Doe", 1000.0);
+        account.printInfo();
+        account.deposit(500.0);
+        account.printInfo();
+        
+        System.out.println("\nSavings Account:");
+        SavingsAccount savings = new SavingsAccount("Jane Smith", 2000.0, 0.05);
+        savings.printInfo();
+        savings.deposit(300.0);
+        savings.applyInterest();
+        savings.printInfo();
+    }
+}
+Question 11: Inheritance — Person, Student, and Teacher
+// Person class
+public class Person {
+    protected String name;
+    protected int age;
+    
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    public void introduce() {
+        System.out.printf("Hi, I am %s and I am %d years old.\n", name, age);
+    }
+}
+
+// Student class extending Person
+public class Student extends Person {
+    private String major;
+    
+    public Student(String name, int age, String major) {
+        super(name, age);
+        this.major = major;
+    }
+    
+    @Override
+    public void introduce() {
+        super.introduce();
+        System.out.println("I study " + major + ".");
+    }
+}
+
+// Teacher class extending Person
+public class Teacher extends Person {
+    private String subject;
+    
+    public Teacher(String name, int age, String subject) {
+        super(name, age);
+        this.subject = subject;
+    }
+    
+    @Override
+    public void introduce() {
+        super.introduce();
+        System.out.println("I teach " + subject + ".");
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Person Hierarchy Test ===\n");
+        
+        System.out.println("Person:");
+        Person person = new Person("Alice Johnson", 30);
+        person.introduce();
+        
+        System.out.println("\nStudent:");
+        Student student = new Student("Bob Smith", 20, "Computer Science");
+        student.introduce();
+        
+        System.out.println("\nTeacher:");
+        Teacher teacher = new Teacher("Dr. Carol Williams", 45, "Mathematics");
+        teacher.introduce();
+    }
+}
+Question 12: Inheritance — Phone and SmartPhone
+// Phone class
+public class Phone {
+    protected String brand;
+    protected String model;
+    
+    public Phone(String brand, String model) {
+        this.brand = brand;
+        this.model = model;
+    }
+    
+    public void call(String number) {
+        System.out.println("Calling " + number + "...");
+    }
+    
+    public void printInfo() {
+        System.out.printf("Brand: %s, Model: %s\n", brand, model);
+    }
+}
+
+// SmartPhone class extending Phone
+public class SmartPhone extends Phone {
+    private String osVersion;
+    
+    public SmartPhone(String brand, String model, String osVersion) {
+        super(brand, model);
+        this.osVersion = osVersion;
+    }
+    
+    public void installApp(String appName) {
+        System.out.println("Installing " + appName + " on " + brand + " " + model);
+    }
+    
+    @Override
+    public void printInfo() {
+        super.printInfo();
+        System.out.println("OS Version: " + osVersion);
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Phone Test ===\n");
+        
+        System.out.println("Regular Phone:");
+        Phone phone = new Phone("Nokia", "3310");
+        phone.printInfo();
+        phone.call("555-1234");
+        
+        System.out.println("\nSmartphone:");
+        SmartPhone smartPhone = new SmartPhone("Apple", "iPhone 15", "iOS 17");
+        smartPhone.printInfo();
+        smartPhone.call("555-5678");
+        smartPhone.installApp("WhatsApp");
+        smartPhone.installApp("Instagram");
+    }
+}
+Question 13: Abstract Class — Vehicle Hierarchy
+// Abstract Vehicle class
+abstract class Vehicle {
+    protected String type;
+    
+    public Vehicle(String type) {
+        this.type = type;
+    }
+    
+    public abstract double fuelCost();
+    
+    public void printVehicle() {
+        System.out.printf("Vehicle: %s, Fuel Cost per km: $%.2f\n", type, fuelCost());
+    }
+}
+
+// Car class extending Vehicle
+class Car extends Vehicle {
+    private double mileage; // km per liter
+    
+    public Car(String type, double mileage) {
+        super(type);
+        this.mileage = mileage;
+    }
+    
+    @Override
+    public double fuelCost() {
+        // Cost per km = 1 / mileage (assuming $1 per liter)
+        return 1.0 / mileage;
+    }
+}
+
+// Truck class extending Vehicle
+class Truck extends Vehicle {
+    private double payload; // in tons
+    
+    public Truck(String type, double payload) {
+        super(type);
+        this.payload = payload;
+    }
+    
+    @Override
+    public double fuelCost() {
+        // Cost per km = 0.05 * payload
+        return 0.05 * payload;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Vehicle Hierarchy Test ===\n");
+        
+        Vehicle[] vehicles = new Vehicle[4];
+        vehicles[0] = new Car("Sedan", 15.0);
+        vehicles[1] = new Car("SUV", 10.0);
+        vehicles[2] = new Truck("Light Truck", 2.5);
+        vehicles[3] = new Truck("Heavy Truck", 8.0);
+        
+        System.out.println("Vehicle Information:");
+        System.out.println("--------------------");
+        for (Vehicle vehicle : vehicles) {
+            vehicle.printVehicle();
+        }
+    }
+}
+
+Question 14: Abstract Class — Instrument Hierarchy
+// Abstract Instrument class
+abstract class Instrument {
+    protected String name;
+    
+    public Instrument(String name) {
+        this.name = name;
+    }
+    
+    public abstract void play();
+    
+    public void describe() {
+        System.out.println("Instrument: " + name);
+    }
+}
+
+// Guitar class extending Instrument
+class Guitar extends Instrument {
+    private int strings;
+    
+    public Guitar(String name, int strings) {
+        super(name);
+        this.strings = strings;
+    }
+    
+    @Override
+    public void play() {
+        System.out.println(name + " goes Strum Strum! (" + strings + " strings)");
+    }
+}
+
+// Piano class extending Instrument
+class Piano extends Instrument {
+    private int keys;
+    
+    public Piano(String name, int keys) {
+        super(name);
+        this.keys = keys;
+    }
+    
+    @Override
+    public void play() {
+        System.out.println(name + " goes Ding Dong! (" + keys + " keys)");
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Instrument Hierarchy Test ===\n");
+        
+        Instrument[] instruments = new Instrument[4];
+        instruments[0] = new Guitar("Acoustic Guitar", 6);
+        instruments[1] = new Guitar("Bass Guitar", 4);
+        instruments[2] = new Piano("Grand Piano", 88);
+        instruments[3] = new Piano("Digital Piano", 76);
+        
+        System.out.println("Instrument Demonstration:");
+        System.out.println("------------------------");
+        for (Instrument instrument : instruments) {
+            instrument.describe();
+            instrument.play();
+            System.out.println();
+        }
+    }
+}
+
+Question 15: Abstract Class — Employee Hierarchy
+// Abstract Employee class
+abstract class Employee {
+    protected String name;
+    protected double hoursWorked;
+    
+    public Employee(String name, double hoursWorked) {
+        this.name = name;
+        this.hoursWorked = hoursWorked;
+    }
+    
+    public abstract double calculatePay();
+    
+    public void printPayslip() {
+        System.out.printf("Employee: %s, Pay: $%.2f\n", name, calculatePay());
+    }
+}
+
+// FullTimeEmployee class extending Employee
+class FullTimeEmployee extends Employee {
+    private double monthlySalary;
+    
+    public FullTimeEmployee(String name, double hoursWorked, double monthlySalary) {
+        super(name, hoursWorked);
+        this.monthlySalary = monthlySalary;
+    }
+    
+    @Override
+    public double calculatePay() {
+        return monthlySalary; // Fixed salary, hours don't affect it
+    }
+}
+
+// PartTimeEmployee class extending Employee
+class PartTimeEmployee extends Employee {
+    private double hourlyRate;
+    
+    public PartTimeEmployee(String name, double hoursWorked, double hourlyRate) {
+        super(name, hoursWorked);
+        this.hourlyRate = hourlyRate;
+    }
+    
+    @Override
+    public double calculatePay() {
+        return hoursWorked * hourlyRate;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Employee Hierarchy Test ===\n");
+        
+        Employee[] employees = new Employee[4];
+        employees[0] = new FullTimeEmployee("John Manager", 160, 5000.0);
+        employees[1] = new FullTimeEmployee("Sarah Director", 160, 7500.0);
+        employees[2] = new PartTimeEmployee("Mike Developer", 80, 25.0);
+        employees[3] = new PartTimeEmployee("Lisa Designer", 60, 20.0);
+        
+        System.out.println("Employee Payslips:");
+        System.out.println("------------------");
+        for (Employee employee : employees) {
+            employee.printPayslip();
+        }
+        
+        System.out.println("\nDetailed Information:");
+        System.out.println("-------------------");
+        for (Employee employee : employees) {
+            if (employee instanceof FullTimeEmployee) {
+                System.out.println(employee.name + " (Full-Time): Fixed monthly salary");
+            } else if (employee instanceof PartTimeEmployee) {
+                System.out.printf("%s (Part-Time): %.1f hours at hourly rate\n", 
+                                employee.name, employee.hoursWorked);
+            }
+        }
+    }
+}
+Question 16: Abstract Class — Food Hierarchy
+// Abstract Food class
+abstract class Food {
+    protected String name;
+    protected int calories;
+    
+    public Food(String name, int calories) {
+        this.name = name;
+        this.calories = calories;
+    }
+    
+    public abstract String getCategory();
+    
+    public void printFood() {
+        System.out.printf("Food: %s, Calories: %d, Category: %s\n", 
+                         name, calories, getCategory());
+    }
+}
+
+// Fruit class extending Food
+class Fruit extends Food {
+    public Fruit(String name, int calories) {
+        super(name, calories);
+    }
+    
+    @Override
+    public String getCategory() {
+        return "Fruit";
+    }
+}
+
+// FastFood class extending Food
+class FastFood extends Food {
+    private boolean extraFat;
+    
+    public FastFood(String name, int calories, boolean extraFat) {
+        super(name, calories);
+        this.extraFat = extraFat;
+    }
+    
+    @Override
+    public String getCategory() {
+        if (extraFat) {
+            return "Fast Food (High Fat)";
+        } else {
+            return "Fast Food";
+        }
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Food Hierarchy Test ===\n");
+        
+        Food[] foods = new Food[4];
+        foods[0] = new Fruit("Apple", 95);
+        foods[1] = new Fruit("Banana", 105);
+        foods[2] = new FastFood("Burger", 550, false);
+        foods[3] = new FastFood("Double Burger", 850, true);
+        
+        System.out.println("Food Information:");
+        System.out.println("-----------------");
+        for (Food food : foods) {
+            food.printFood();
+        }
+    }
+}
+
+Question 17: Encapsulation + Constructor — Library Book
+public class LibraryBook {
+    private String title;
+    private String author;
+    private boolean isAvailable;
+    
+    // No-argument constructor
+    public LibraryBook() {
+        this.title = "Unknown";
+        this.author = "Unknown";
+        this.isAvailable = true;
+    }
+    
+    // Two-parameter constructor
+    public LibraryBook(String title, String author) {
+        this.title = title;
+        this.author = author;
+        this.isAvailable = true;
+    }
+    
+    public void checkout() {
+        if (isAvailable) {
+            isAvailable = false;
+            System.out.println(title + " has been checked out.");
+        } else {
+            System.out.println("Error: Book is not available.");
+        }
+    }
+    
+    public void returnBook() {
+        isAvailable = true;
+        System.out.println(title + " has been returned.");
+    }
+    
+    public void printInfo() {
+        System.out.printf("Title: %s, Author: %s, Available: %b\n", 
+                         title, author, isAvailable);
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Library Book Test ===\n");
+        
+        LibraryBook book = new LibraryBook("The Great Gatsby", "F. Scott Fitzgerald");
+        
+        System.out.println("Initial book info:");
+        book.printInfo();
+        
+        System.out.println("\nChecking out the book:");
+        book.checkout();
+        book.printInfo();
+        
+        System.out.println("\nTrying to check out again (error case):");
+        book.checkout();
+        
+        System.out.println("\nReturning the book:");
+        book.returnBook();
+        book.printInfo();
+        
+        System.out.println("\nChecking out after return:");
+        book.checkout();
+        book.printInfo();
+    }
+}
+
+Question 18: Encapsulation + Constructor — Scoreboard
+public class Scoreboard {
+    private String playerName;
+    private int score;
+    
+    // No-argument constructor
+    public Scoreboard() {
+        this.playerName = "Player";
+        this.score = 0;
+    }
+    
+    // One-parameter constructor
+    public Scoreboard(String playerName) {
+        this.playerName = playerName;
+        this.score = 0;
+    }
+    
+    public void addPoints(int points) {
+        if (points > 0) {
+            score += points;
+            System.out.println("Added " + points + " points. New score: " + score);
+        } else {
+            System.out.println("Error: Points must be positive.");
+        }
+    }
+    
+    public void deductPoints(int points) {
+        if (points > 0 && (score - points) >= 0) {
+            score -= points;
+            System.out.println("Deducted " + points + " points. New score: " + score);
+        } else if (points <= 0) {
+            System.out.println("Error: Invalid deduction. Points must be positive.");
+        } else {
+            System.out.println("Error: Invalid deduction. Score would go below 0.");
+        }
+    }
+    
+    public void resetScore() {
+        score = 0;
+        System.out.println("Score has been reset to 0.");
+    }
+    
+    public void printScore() {
+        System.out.printf("Player: %s, Score: %d\n", playerName, score);
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Scoreboard Test ===\n");
+        
+        Scoreboard scoreboard = new Scoreboard("Alice");
+        
+        System.out.println("Initial score:");
+        scoreboard.printScore();
+        
+        System.out.println("\nAdding points:");
+        scoreboard.addPoints(50);
+        scoreboard.addPoints(30);
+        
+        System.out.println("\nTrying to add invalid points:");
+        scoreboard.addPoints(-10);
+        
+        System.out.println("\nDeducting points:");
+        scoreboard.deductPoints(20);
+        
+        System.out.println("\nTrying invalid deductions:");
+        scoreboard.deductPoints(-5);
+        scoreboard.deductPoints(100);
+        
+        System.out.println("\nResetting score:");
+        scoreboard.resetScore();
+        scoreboard.printScore();
+    }
+}
+Question 19: Inheritance + Encapsulation — Staff
+// Staff class
+class Staff {
+    private String name;
+    private double hourlyRate;
+    
+    public Staff(String name, double hourlyRate) {
+        this.name = name;
+        this.hourlyRate = hourlyRate;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public double getHourlyRate() {
+        return hourlyRate;
+    }
+    
+    public double calculateWeeklyPay(int hours) {
+        return hourlyRate * hours;
+    }
+    
+    public void printInfo() {
+        System.out.printf("Staff: %s, Rate: $%.2f/hr\n", name, hourlyRate);
+    }
+}
+
+// Supervisor class extending Staff
+class Supervisor extends Staff {
+    private int teamSize;
+    
+    public Supervisor(String name, double hourlyRate, int teamSize) {
+        super(name, hourlyRate);
+        this.teamSize = teamSize;
+    }
+    
+    @Override
+    public double calculateWeeklyPay(int hours) {
+        double basePay = super.calculateWeeklyPay(hours);
+        double bonus = 50.0 * teamSize;
+        return basePay + bonus;
+    }
+    
+    @Override
+    public void printInfo() {
+        super.printInfo();
+        System.out.println("Team Size: " + teamSize);
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Staff Hierarchy Test ===\n");
+        
+        System.out.println("Regular Staff:");
+        Staff staff = new Staff("John Worker", 20.0);
+        staff.printInfo();
+        System.out.printf("Weekly Pay (40 hours): $%.2f\n", staff.calculateWeeklyPay(40));
+        
+        System.out.println("\nSupervisor:");
+        Supervisor supervisor = new Supervisor("Sarah Manager", 30.0, 5);
+        supervisor.printInfo();
+        System.out.printf("Weekly Pay (40 hours with bonus): $%.2f\n", 
+                         supervisor.calculateWeeklyPay(40));
+    }
+}
+
+Question 20: Abstract + Inheritance — Notification System
+// Abstract Notification class
+abstract class Notification {
+    protected String recipient;
+    
+    public Notification(String recipient) {
+        this.recipient = recipient;
+    }
+    
+    public abstract void send();
+    
+    public void log() {
+        System.out.println("[Notification sent to: " + recipient + "]");
+    }
+}
+
+// EmailNotification class
+class EmailNotification extends Notification {
+    private String subject;
+    
+    public EmailNotification(String recipient, String subject) {
+        super(recipient);
+        this.subject = subject;
+    }
+    
+    @Override
+    public void send() {
+        System.out.printf("Email to %s: Subject: %s\n", recipient, subject);
+    }
+}
+
+// SMSNotification class
+class SMSNotification extends Notification {
+    private String phoneNumber;
+    
+    public SMSNotification(String recipient, String phoneNumber) {
+        super(recipient);
+        this.phoneNumber = phoneNumber;
+    }
+    
+    @Override
+    public void send() {
+        System.out.printf("SMS to %s for %s\n", phoneNumber, recipient);
+    }
+}
+
+// PushNotification class
+class PushNotification extends Notification {
+    private String appName;
+    
+    public PushNotification(String recipient, String appName) {
+        super(recipient);
+        this.appName = appName;
+    }
+    
+    @Override
+    public void send() {
+        System.out.printf("Push from %s to %s\n", appName, recipient);
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Notification System Test ===\n");
+        
+        Notification[] notifications = new Notification[3];
+        notifications[0] = new EmailNotification("john@example.com", "Welcome!");
+        notifications[1] = new SMSNotification("John Doe", "+1234567890");
+        notifications[2] = new PushNotification("John Doe", "WhatsApp");
+        
+        System.out.println("Sending Notifications:");
+        System.out.println("---------------------");
+        for (Notification notification : notifications) {
+            notification.send();
+            notification.log();
+            System.out.println();
+        }
+    }
+}
+
+Question 21: Encapsulation — Counter Class
+public class Counter {
+    private int count;
+    
+    // No-argument constructor
+    public Counter() {
+        this.count = 0;
+    }
+    
+    public void increment() {
+        count++;
+        System.out.println("Incremented to: " + count);
+    }
+    
+    public void decrement() {
+        if (count > 0) {
+            count--;
+            System.out.println("Decremented to: " + count);
+        } else {
+            System.out.println("Error: Counter cannot go below zero.");
+        }
+    }
+    
+    public void reset() {
+        count = 0;
+        System.out.println("Counter reset to: 0");
+    }
+    
+    public void setCount(int value) {
+        if (value >= 0) {
+            count = value;
+            System.out.println("Count set to: " + count);
+        } else {
+            System.out.println("Error: Count cannot be negative.");
+        }
+    }
+    
+    public int getCount() {
+        return count;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Counter Test ===\n");
+        
+        Counter counter = new Counter();
+        
+        System.out.println("Initial count: " + counter.getCount());
+        
+        System.out.println("\nIncrementing 3 times:");
+        counter.increment();
+        counter.increment();
+        counter.increment();
+        
+        System.out.println("\nDecrementing once:");
+        counter.decrement();
+        
+        System.out.println("\nTrying to decrement when at 0 (error case):");
+        counter.decrement();
+        counter.decrement();
+        
+        System.out.println("\nResetting counter:");
+        counter.reset();
+        
+        System.out.println("\nSetting count to invalid value:");
+        counter.setCount(-5);
+        
+        System.out.println("\nSetting count to valid value:");
+        counter.setCount(10);
+        
+        System.out.println("\nFinal count: " + counter.getCount());
+    }
+}
+
+Question 22: Constructor Overloading — Triangle Class
+public class Triangle {
+    private double a, b, c;
+    
+    // One-parameter constructor (equilateral)
+    public Triangle(double side) {
+        this(side, side, side);
+    }
+    
+    // Two-parameter constructor (isosceles: a = base, b = c = height)
+    public Triangle(double base, double height) {
+        this(base, height, height);
+    }
+    
+    // Three-parameter constructor
+    public Triangle(double a, double b, double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+    
+    public double perimeter() {
+        return a + b + c;
+    }
+    
+    public boolean isEquilateral() {
+        return a == b && b == c;
+    }
+    
+    public void printInfo() {
+        System.out.printf("Triangle sides: %.2f, %.2f, %.2f\n", a, b, c);
+        System.out.printf("Perimeter: %.2f\n", perimeter());
+        System.out.println("Is Equilateral: " + isEquilateral());
+        System.out.println();
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Triangle Test ===\n");
+        
+        System.out.println("Equilateral Triangle (side=5.0):");
+        Triangle t1 = new Triangle(5.0);
+        t1.printInfo();
+        
+        System.out.println("Isosceles Triangle (base=6.0, height=4.0):");
+        Triangle t2 = new Triangle(6.0, 4.0);
+        t2.printInfo();
+        
+        System.out.println("Scalene Triangle (3.0, 4.0, 5.0):");
+        Triangle t3 = new Triangle(3.0, 4.0, 5.0);
+        t3.printInfo();
+    }
+}
+
+Question 23: Inheritance — Shape and ColoredShape
+// Shape class
+class Shape {
+    protected int sides;
+    
+    public Shape(int sides) {
+        this.sides = sides;
+    }
+    
+    public int getSides() {
+        return sides;
+    }
+    
+    public void describe() {
+        System.out.println("This shape has " + sides + " sides.");
+    }
+    
+    public boolean isPolygon() {
+        return sides >= 3;
+    }
+}
+
+// ColoredShape class extending Shape
+class ColoredShape extends Shape {
+    private String color;
+    
+    public ColoredShape(int sides, String color) {
+        super(sides);
+        this.color = color;
+    }
+    
+    @Override
+    public void describe() {
+        super.describe();
+        System.out.println("Color: " + color + ".");
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Shape Hierarchy Test ===\n");
+        
+        System.out.println("Shape (Square - 4 sides):");
+        Shape shape = new Shape(4);
+        shape.describe();
+        System.out.println("Is Polygon: " + shape.isPolygon());
+        
+        System.out.println("\nColoredShape (Triangle - 3 sides, Red):");
+        ColoredShape coloredShape = new ColoredShape(3, "Red");
+        coloredShape.describe();
+        System.out.println("Is Polygon: " + coloredShape.isPolygon());
+        
+        System.out.println("\nShape with 2 sides (not a polygon):");
+        Shape line = new Shape(2);
+        line.describe();
+        System.out.println("Is Polygon: " + line.isPolygon());
+        
+        System.out.println("\nColoredShape with 1 side (not a polygon):");
+        ColoredShape point = new ColoredShape(1, "Blue");
+        point.describe();
+        System.out.println("Is Polygon: " + point.isPolygon());
+    }
+}
+
+Question 24: Abstract Class — Payment System
+// Abstract Payment class
+abstract class Payment {
+    protected double amount;
+    
+    public Payment(double amount) {
+        this.amount = amount;
+    }
+    
+    public abstract void processPayment();
+    
+    public void printReceipt() {
+        System.out.printf("Payment of $%.2f processed.\n", amount);
+    }
+}
+
+// CreditCardPayment class
+class CreditCardPayment extends Payment {
+    private String cardLastFour;
+    
+    public CreditCardPayment(double amount, String cardLastFour) {
+        super(amount);
+        this.cardLastFour = cardLastFour;
+    }
+    
+    @Override
+    public void processPayment() {
+        System.out.printf("Credit card ending in %s charged $%.2f.\n", 
+                         cardLastFour, amount);
+    }
+}
+
+// CashPayment class
+class CashPayment extends Payment {
+    private double cashGiven;
+    
+    public CashPayment(double amount, double cashGiven) {
+        super(amount);
+        this.cashGiven = cashGiven;
+    }
+    
+    @Override
+    public void processPayment() {
+        if (cashGiven >= amount) {
+            double change = cashGiven - amount;
+            System.out.printf("Cash received: $%.2f, Change: $%.2f\n", 
+                             cashGiven, change);
+        } else {
+            System.out.printf("Error: Insufficient cash. Need $%.2f more.\n", 
+                             amount - cashGiven);
+        }
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Payment System Test ===\n");
+        
+        Payment[] payments = new Payment[4];
+        payments[0] = new CreditCardPayment(150.00, "1234");
+        payments[1] = new CreditCardPayment(75.50, "5678");
+        payments[2] = new CashPayment(50.00, 60.00);
+        payments[3] = new CashPayment(100.00, 80.00);
+        
+        System.out.println("Processing Payments:");
+        System.out.println("-------------------");
+        for (Payment payment : payments) {
+            payment.processPayment();
+            payment.printReceipt();
+            System.out.println();
+        }
+    }
+}
+
+Question 25: Encapsulation + Method Overloading — Converter
+public class Converter {
+    
+    // Convert kilometers to miles
+    public double convert(double km) {
+        return km * 0.621371;
+    }
+    
+    // Convert feet to meters
+    public double convert(int feet) {
+        return feet * 0.3048;
+    }
+    
+    // Convert Celsius to Fahrenheit or Kelvin
+    public double convert(double celsius, String unit) {
+        if (unit.equals("F")) {
+            return celsius * 9/5 + 32;
+        } else if (unit.equals("K")) {
+            return celsius + 273.15;
+        } else {
+            System.out.println("Error: Invalid unit. Use 'F' or 'K'");
+            return 0;
+        }
+    }
+    
+    public void printResult(String from, double input, String to, double output) {
+        System.out.printf("%.2f %s = %.2f %s\n", input, from, output, to);
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Converter Test ===\n");
+        
+        Converter converter = new Converter();
+        
+        // Test kilometer to miles
+        double km = 10.0;
+        double miles = converter.convert(km);
+        System.out.print("Kilometers to Miles: ");
+        converter.printResult("km", km, "miles", miles);
+        
+        // Test feet to meters
+        int feet = 100;
+        double meters = converter.convert(feet);
+        System.out.print("Feet to Meters: ");
+        converter.printResult("ft", feet, "m", meters);
+        
+        // Test Celsius to Fahrenheit
+        double celsius = 25.0;
+        double fahrenheit = converter.convert(celsius, "F");
+        System.out.print("Celsius to Fahrenheit: ");
+        converter.printResult("°C", celsius, "°F", fahrenheit);
+        
+        // Test Celsius to Kelvin
+        double kelvin = converter.convert(celsius, "K");
+        System.out.print("Celsius to Kelvin: ");
+        converter.printResult("°C", celsius, "K", kelvin);
+        
+        // Test with different values
+        System.out.println("\nAdditional Conversions:");
+        System.out.print("50 km to miles: ");
+        converter.printResult("km", 50, "miles", converter.convert(50));
+        
+        System.out.print("25°C to Fahrenheit: ");
+        converter.printResult("°C", 25, "°F", converter.convert(25, "F"));
+    }
+}
+Question 26: Inheritance — Media Hierarchy
+// Media class
+class Media {
+    protected String title;
+    protected int year;
+    
+    public Media(String title, int year) {
+        this.title = title;
+        this.year = year;
+    }
+    
+    public void play() {
+        System.out.printf("Playing: %s (%d)\n", title, year);
+    }
+    
+    public void printInfo() {
+        System.out.printf("Title: %s, Year: %d\n", title, year);
+    }
+}
+
+// Movie class extending Media
+class Movie extends Media {
+    private String director;
+    
+    public Movie(String title, int year, String director) {
+        super(title, year);
+        this.director = director;
+    }
+    
+    @Override
+    public void printInfo() {
+        super.printInfo();
+        System.out.println("Director: " + director);
+    }
+}
+
+// Podcast class extending Media
+class Podcast extends Media {
+    private String host;
+    private int episodeCount;
+    
+    public Podcast(String title, int year, String host, int episodeCount) {
+        super(title, year);
+        this.host = host;
+        this.episodeCount = episodeCount;
+    }
+    
+    @Override
+    public void play() {
+        System.out.printf("Playing: %s (%d) - Podcast hosted by %s, Episodes: %d\n", 
+                         title, year, host, episodeCount);
+    }
+    
+    @Override
+    public void printInfo() {
+        System.out.printf("Title: %s, Year: %d, Host: %s, Episodes: %d\n", 
+                         title, year, host, episodeCount);
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Media Hierarchy Test ===\n");
+        
+        System.out.println("Regular Media:");
+        Media media = new Media("Generic Content", 2020);
+        media.play();
+        media.printInfo();
+        
+        System.out.println("\nMovie:");
+        Movie movie = new Movie("Inception", 2010, "Christopher Nolan");
+        movie.play();
+        movie.printInfo();
+        
+        System.out.println("\nPodcast:");
+        Podcast podcast = new Podcast("The Daily", 2020, "Michael Barbaro", 1500);
+        podcast.play();
+        podcast.printInfo();
+    }
+}
+
+Question 27: Abstract + Encapsulation — Subscription Plans
+// Abstract Subscription class
+abstract class Subscription {
+    private String userName;
+    
+    public Subscription(String userName) {
+        this.userName = userName;
+    }
+    
+    public String getUserName() {
+        return userName;
+    }
+    
+    public abstract double monthlyFee();
+    
+    public void printPlan() {
+        System.out.printf("User: %s, Monthly Fee: $%.2f\n", 
+                         userName, monthlyFee());
+    }
+}
+
+// BasicPlan class
+class BasicPlan extends Subscription {
+    public BasicPlan(String userName) {
+        super(userName);
+    }
+    
+    @Override
+    public double monthlyFee() {
+        return 9.99;
+    }
+}
+
+// PremiumPlan class
+class PremiumPlan extends Subscription {
+    private int extraFeatures;
+    
+    public PremiumPlan(String userName, int extraFeatures) {
+        super(userName);
+        this.extraFeatures = extraFeatures;
+    }
+    
+    @Override
+    public double monthlyFee() {
+        return 9.99 + 4.99 * extraFeatures;
+    }
+}
+
+// FamilyPlan class
+class FamilyPlan extends Subscription {
+    private int members;
+    
+    public FamilyPlan(String userName, int members) {
+        super(userName);
+        this.members = members;
+    }
+    
+    @Override
+    public double monthlyFee() {
+        return 14.99 + 2.99 * members;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Subscription Plans Test ===\n");
+        
+        Subscription[] subscriptions = new Subscription[4];
+        subscriptions[0] = new BasicPlan("Alice");
+        subscriptions[1] = new PremiumPlan("Bob", 2);
+        subscriptions[2] = new PremiumPlan("Charlie", 3);
+        subscriptions[3] = new FamilyPlan("David", 4);
+        
+        System.out.println("Subscription Details:");
+        System.out.println("--------------------");
+        for (Subscription sub : subscriptions) {
+            sub.printPlan();
+        }
+        
+        System.out.println("\nDetailed Breakdown:");
+        System.out.println("Basic Plan: $9.99 - Basic features only");
+        System.out.println("Premium Plan: $9.99 + $4.99 per extra feature");
+        System.out.println("Family Plan: $14.99 + $2.99 per member");
+    }
+}
+Question 28: Encapsulation — Inventory Item
+public class InventoryItem {
+    private String itemName;
+    private int quantity;
+    private double unitPrice;
+    
+    // Three-parameter constructor
+    public InventoryItem(String itemName, int quantity, double unitPrice) {
+        this.itemName = itemName;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+    }
+    
+    // Getter methods
+    public String getItemName() {
+        return itemName;
+    }
+    
+    public int getQuantity() {
+        return quantity;
+    }
+    
+    public double getUnitPrice() {
+        return unitPrice;
+    }
+    
+    public void sell(int amount) {
+        if (amount > quantity) {
+            System.out.println("Error: Not enough stock. Available: " + quantity);
+        } else {
+            quantity -= amount;
+            System.out.println("Sold " + amount + " " + itemName + "(s). Remaining: " + quantity);
+        }
+    }
+    
+    public void restock(int amount) {
+        if (amount > 0) {
+            quantity += amount;
+            System.out.println("Restocked " + amount + " " + itemName + "(s). New quantity: " + quantity);
+        } else {
+            System.out.println("Error: Restock amount must be positive.");
+        }
+    }
+    
+    public double totalValue() {
+        return quantity * unitPrice;
+    }
+    
+    public void printInfo() {
+        System.out.printf("Item: %s, Qty: %d, Price: $%.2f, Total: $%.2f\n", 
+                         itemName, quantity, unitPrice, totalValue());
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Inventory Item Test ===\n");
+        
+        InventoryItem item = new InventoryItem("Laptop", 10, 999.99);
+        
+        System.out.println("Initial inventory:");
+        item.printInfo();
+        
+        System.out.println("\nSelling 3 laptops:");
+        item.sell(3);
+        item.printInfo();
+        
+        System.out.println("\nTrying to sell 10 laptops (error case):");
+        item.sell(10);
+        
+        System.out.println("\nRestocking 5 laptops:");
+        item.restock(5);
+        item.printInfo();
+        
+        System.out.println("\nTrying to restock with negative amount:");
+        item.restock(-2);
+        
+        System.out.println("\nSelling 8 laptops:");
+        item.sell(8);
+        item.printInfo();
+        
+        System.out.println("\nFinal total value:");
+        System.out.printf("Total inventory value: $%.2f\n", item.totalValue());
+    }
+}
+
+Question 29: Inheritance + Overriding — Game Character
+// Character class
+class Character {
+    protected String name;
+    protected int health;
+    
+    public Character(String name, int health) {
+        this.name = name;
+        this.health = Math.max(0, health);
+    }
+    
+    public void takeDamage(int amount) {
+        health = Math.max(0, health - amount);
+        System.out.println(name + " took " + amount + " damage! HP: " + health);
+    }
+    
+    public void heal(int amount) {
+        health += amount;
+        System.out.println(name + " healed " + amount + " HP! HP: " + health);
+    }
+    
+    public void attack() {
+        System.out.println(name + " attacks!");
+    }
+    
+    public void printStatus() {
+        System.out.printf("Character: %s, HP: %d\n", name, health);
+    }
+}
+
+// Warrior class extending Character
+class Warrior extends Character {
+    private int armor;
+    
+    public Warrior(String name, int health, int armor) {
+        super(name, health);
+        this.armor = armor;
+    }
+    
+    @Override
+    public void takeDamage(int amount) {
+        int reducedDamage = Math.max(0, amount - armor);
+        health = Math.max(0, health - reducedDamage);
+        System.out.printf("%s took %d damage (reduced by armor %d)! HP: %d\n", 
+                         name, reducedDamage, armor, health);
+    }
+    
+    @Override
+    public void attack() {
+        System.out.println(name + " swings a sword for extra damage!");
+    }
+}
+
+// Mage class extending Character
+class Mage extends Character {
+    private int mana;
+    
+    public Mage(String name, int health, int mana) {
+        super(name, health);
+        this.mana = mana;
+    }
+    
+    public void castSpell() {
+        if (mana >= 20) {
+            mana -= 20;
+            System.out.println(name + " casts a spell! Mana: " + mana);
+        } else {
+            System.out.println("Not enough mana! Need 20 mana, have " + mana);
+        }
+    }
+    
+    @Override
+    public void attack() {
+        castSpell();
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Game Character Test ===\n");
+        
+        System.out.println("Warrior Test:");
+        Warrior warrior = new Warrior("Aragorn", 100, 15);
+        warrior.printStatus();
+        warrior.attack();
+        warrior.takeDamage(30);
+        warrior.takeDamage(20);
+        warrior.heal(25);
+        warrior.printStatus();
+        
+        System.out.println("\nMage Test:");
+        Mage mage = new Mage("Gandalf", 80, 50);
+        mage.printStatus();
+        mage.attack();
+        mage.attack();
+        mage.attack(); // Third spell cast
+        mage.heal(15);
+        mage.printStatus();
+        
+        System.out.println("\nBattle Simulation:");
+        warrior.takeDamage(10);
+        mage.takeDamage(25);
+        warrior.printStatus();
+        mage.printStatus();
+    }
+}
+Question 30: Abstract Class — Transport System
+// Abstract Transport class
+abstract class Transport {
+    protected String origin;
+    protected String destination;
+    
+    public Transport(String origin, String destination) {
+        this.origin = origin;
+        this.destination = destination;
+    }
+    
+    public abstract double ticketPrice();
+    public abstract int travelTime();
+    
+    public void printTrip() {
+        System.out.printf("From %s to %s | Price: $%.2f | Time: %d min\n", 
+                         origin, destination, ticketPrice(), travelTime());
+    }
+}
+
+// Bus class
+class Bus extends Transport {
+    private double distanceKm;
+    
+    public Bus(String origin, String destination, double distanceKm) {
+        super(origin, destination);
+        this.distanceKm = distanceKm;
+    }
+    
+    @Override
+    public double ticketPrice() {
+        return 0.10 * distanceKm;
+    }
+    
+    @Override
+    public int travelTime() {
+        return (int)(distanceKm * 1.5);
+    }
+}
+
+// Train class
+class Train extends Transport {
+    private double distanceKm;
+    
+    public Train(String origin, String destination, double distanceKm) {
+        super(origin, destination);
+        this.distanceKm = distanceKm;
+    }
+    
+    @Override
+    public double ticketPrice() {
+        return 0.15 * distanceKm;
+    }
+    
+    @Override
+    public int travelTime() {
+        return (int)(distanceKm * 0.8);
+    }
+}
+
+// Plane class
+class Plane extends Transport {
+    private int flightDuration;
+    
+    public Plane(String origin, String destination, int flightDuration) {
+        super(origin, destination);
+        this.flightDuration = flightDuration;
+    }
+    
+    @Override
+    public double ticketPrice() {
+        return 50.0 + flightDuration * 2;
+    }
+    
+    @Override
+    public int travelTime() {
+        return flightDuration;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Transport System Test ===\n");
+        
+        Transport[] transports = new Transport[4];
+        transports[0] = new Bus("New York", "Boston", 350.0);
+        transports[1] = new Train("Boston", "Philadelphia", 450.0);
+        transports[2] = new Plane("New York", "Los Angeles", 360);
+        transports[3] = new Bus("San Francisco", "Los Angeles", 600.0);
+        
+        System.out.println("Trip Information:");
+        System.out.println("-----------------");
+        for (Transport transport : transports) {
+            transport.printTrip();
+        }
+        
+        System.out.println("\nComparison:");
+        System.out.println("Bus: Cheaper but slower");
+        System.out.println("Train: Moderate price, faster than bus");
+        System.out.println("Plane: Most expensive but fastest for long distances");
+        
+        System.out.println("\nDetailed Breakdown:");
+        System.out.println("Bus (350 km): $35.00, 525 minutes");
+        System.out.println("Train (450 km): $67.50, 360 minutes");
+        System.out.println("Plane (360 min): $770.00, 360 minutes");
+        System.out.println("Bus (600 km): $60.00, 900 minutes");
+    }
+}
+
+Question 1: Encapsulation — Book Class
+public class Book {
+    private String title;
+    private double price;
+    
+    // Two-parameter constructor
+    public Book(String title, double price) {
+        this.title = title;
+        setPrice(price); // Using setter to validate
+    }
+    
+    // Getter methods
+    public String getTitle() {
+        return title;
+    }
+    
+    public double getPrice() {
+        return price;
+    }
+    
+    // Setter with validation
+    public void setPrice(double price) {
+        if (price > 0) {
+            this.price = price;
+        } else {
+            System.out.println("Error: Price must be positive");
+        }
+    }
+    
+    // Print info method
+    public void printInfo() {
+        System.out.printf("Title: %s, Price: %.2f\n", title, price);
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Book Class Test ===\n");
+        
+        // Create Book object
+        Book book = new Book("Java Basics", 29.99);
+        
+        System.out.println("Initial book info:");
+        book.printInfo();
+        
+        System.out.println("\nTesting setPrice() with invalid value (-15.00):");
+        book.setPrice(-15.00);
+        
+        System.out.println("\nTesting setPrice() with valid value (45.50):");
+        book.setPrice(45.50);
+        
+        System.out.println("\nFinal book info:");
+        book.printInfo();
+        
+        System.out.println("\nUsing getters:");
+        System.out.println("Title: " + book.getTitle());
+        System.out.println("Price: $" + book.getPrice());
+    }
+}
+
+Question 2: Encapsulation — Person Class
+public class Person {
+    private String name;
+    private int age;
+    
+    // Two-parameter constructor
+    public Person(String name, int age) {
+        this.name = name;
+        setAge(age); // Using setter to validate
+    }
+    
+    // Getter methods
+    public String getName() {
+        return name;
+    }
+    
+    public int getAge() {
+        return age;
+    }
+    
+    // Setter with validation
+    public void setAge(int age) {
+        if (age >= 0 && age <= 150) {
+            this.age = age;
+        } else {
+            System.out.println("Error: Age is not valid");
+        }
+    }
+    
+    // Print info method
+    public void printInfo() {
+        System.out.printf("Name: %s, Age: %d\n", name, age);
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Person Class Test ===\n");
+        
+        // Create Person object
+        Person person = new Person("Sara", 25);
+        
+        System.out.println("Initial person info:");
+        person.printInfo();
+        
+        System.out.println("\nTesting setAge() with invalid value (-5):");
+        person.setAge(-5);
+        
+        System.out.println("\nTesting setAge() with invalid value (200):");
+        person.setAge(200);
+        
+        System.out.println("\nTesting setAge() with valid value (30):");
+        person.setAge(30);
+        
+        System.out.println("\nFinal person info:");
+        person.printInfo();
+        
+        System.out.println("\nUsing getters:");
+        System.out.println("Name: " + person.getName());
+        System.out.println("Age: " + person.getAge());
+    }
+}
+Question 3: Encapsulation — Product Class
+public class Product {
+    private String productName;
+    private int stock;
+    
+    // Two-parameter constructor
+    public Product(String productName, int stock) {
+        this.productName = productName;
+        setStock(stock); // Using setter to validate
+    }
+    
+    // Getter methods
+    public String getProductName() {
+        return productName;
+    }
+    
+    public int getStock() {
+        return stock;
+    }
+    
+    // Setter with validation
+    public void setStock(int stock) {
+        if (stock >= 0) {
+            this.stock = stock;
+        } else {
+            System.out.println("Error: Stock cannot be negative");
+        }
+    }
+    
+    // Add stock method with validation
+    public void addStock(int amount) {
+        if (amount > 0) {
+            stock += amount;
+            System.out.println("Added " + amount + " units. New stock: " + stock);
+        } else {
+            System.out.println("Error: Amount must be positive");
+        }
+    }
+    
+    // Print info method
+    public void printInfo() {
+        System.out.printf("Product: %s, Stock: %d\n", productName, stock);
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("=== Product Class Test ===\n");
+        
+        // Create Product object
+        Product product = new Product("Pen", 50);
+        
+        System.out.println("Initial product info:");
+        product.printInfo();
+        
+        System.out.println("\nTesting setStock() with invalid value (-10):");
+        product.setStock(-10);
+        
+        System.out.println("\nTesting addStock() with invalid value (-5):");
+        product.addStock(-5);
+        
+        System.out.println("\nTesting addStock() with valid value (25):");
+        product.addStock(25);
+        
+        System.out.println("\nTesting setStock() with valid value (100):");
+        product.setStock(100);
+        
+        System.out.println("\nFinal product info:");
+        product.printInfo();
+        
+        System.out.println("\nUsing getters:");
+        System.out.println("Product Name: " + product.getProductName());
+        System.out.println("Stock: " + product.getStock());
+    }
+}
